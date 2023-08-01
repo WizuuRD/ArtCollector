@@ -1,12 +1,10 @@
 package com.wizurd.deviantparser.client.dto
 
-import com.google.gson.annotations.SerializedName
+import com.fasterxml.jackson.annotation.JsonProperty
 
 data class TokenDTO(
-    @SerializedName("expires_in     ") val expires_in: Long = 0,
-    @SerializedName("status         ") val status: String = "",
-    @SerializedName("access_token   ") val access_token: String = "",
-    @SerializedName("token_type     ") val token_type: String = "",
-    @SerializedName("refresh_token  ") val refresh_token: String = "",
-    @SerializedName("scope          ") val scope: String = ""
+    @JsonProperty("expires_in"   ) val expiresIn   : Int?    = null,
+    @JsonProperty("status"       ) val status      : String = "",
+    @JsonProperty("access_token" ) val accessToken : String = "",
+    @JsonProperty("token_type"   ) val tokenType   : String = ""
 )

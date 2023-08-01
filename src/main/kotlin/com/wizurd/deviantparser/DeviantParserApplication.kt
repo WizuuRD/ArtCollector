@@ -12,4 +12,7 @@ class DeviantParserApplication
 
 fun main(args: Array<String>) {
     runApplication<DeviantParserApplication>(*args)
+    println("\n" +
+            "▄▀█ █▀█ █▀█   █▀ ▀█▀ ▄▀█ █▀█ ▀█▀ █▀▀ █▀▄\n" +
+            "█▀█ █▀▀ █▀▀   ▄█ ░█░ █▀█ █▀▄ ░█░ ██▄ █▄▀")
 }

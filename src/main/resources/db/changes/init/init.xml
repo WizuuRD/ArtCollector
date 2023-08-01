@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd" xmlns="http://www.liquibase.org/xml/ns/dbchangelog">
+  <changeSet id="init" author="WizuRD" dbms="postgresql">
+    <comment>Initialize database</comment>
+    <sqlFile relativeToChangelogFile="true" path="sql/init.sql" />
+  </changeSet>
+</databaseChangeLog>

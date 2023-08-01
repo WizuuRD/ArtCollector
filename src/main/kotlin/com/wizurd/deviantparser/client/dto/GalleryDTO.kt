@@ -1,95 +1,81 @@
 package com.wizurd.deviantparser.client.dto
 
-import com.google.gson.annotations.SerializedName
+import com.fasterxml.jackson.annotation.JsonProperty
 
 data class GalleryDTO (
 
-  @SerializedName("has_more"    ) var hasMore    : Boolean?           = null,
-  @SerializedName("next_offset" ) var nextOffset : String?            = null,
-  @SerializedName("results"     ) var results    : ArrayList<Results> = arrayListOf()
+  @JsonProperty("has_more"    ) var hasMore    : Boolean? = null,
+  @JsonProperty("next_offset" ) var nextOffset : String? = null,
+  @JsonProperty("results"     ) var results    : ArrayList<DeviantResultsDTO> = arrayListOf()
 
 )
 
-data class Author (
+data class DeviantAuthorDTO (
 
-  @SerializedName("userid"        ) var userid       : String?  = null,
-  @SerializedName("username"      ) var username     : String?  = null,
-  @SerializedName("usericon"      ) var usericon     : String?  = null,
-  @SerializedName("type"          ) var type         : String?  = null,
-  @SerializedName("is_subscribed" ) var isSubscribed : Boolean? = null
-
-)
-
-data class Body (
-
-  @SerializedName("type"     ) var type     : String? = null,
-  @SerializedName("features" ) var features : String? = null
+  @JsonProperty("userid"        ) var userid       : String? = null,
+  @JsonProperty("username"      ) var username     : String? = null,
+  @JsonProperty("usericon"      ) var userIcon     : String? = null,
+  @JsonProperty("type"          ) var type         : String? = null,
+  @JsonProperty("is_subscribed" ) var isSubscribed : Boolean? = null
 
 )
 
-data class Content (
+data class DeviantContentDTO (
 
-  @SerializedName("src"          ) var src          : String?  = null,
-  @SerializedName("height"       ) var height       : Int?     = null,
-  @SerializedName("width"        ) var width        : Int?     = null,
-  @SerializedName("transparency" ) var transparency : Boolean? = null,
-  @SerializedName("filesize"     ) var filesize     : Int?     = null
-
-)
-
-data class Preview (
-
-  @SerializedName("src"          ) var src          : String?  = null,
-  @SerializedName("height"       ) var height       : Int?     = null,
-  @SerializedName("width"        ) var width        : Int?     = null,
-  @SerializedName("transparency" ) var transparency : Boolean? = null
+  @JsonProperty("src"          ) var src          : String? = null,
+  @JsonProperty("height"       ) var height       : Int? = null,
+  @JsonProperty("width"        ) var width        : Int? = null,
+  @JsonProperty("transparency" ) var transparency : Boolean? = null,
+  @JsonProperty("filesize"     ) var fileSize     : Int? = null
 
 )
 
-data class Results (
+data class DeviantPreviewDTO (
 
-  @SerializedName("deviationid"       ) var deviationid      : String?           = null,
-  @SerializedName("printid"           ) var printid          : String?           = null,
-  @SerializedName("url"               ) var url              : String?           = null,
-  @SerializedName("title"             ) var title            : String?           = null,
-  @SerializedName("category"          ) var category         : String?           = null,
-  @SerializedName("category_path"     ) var categoryPath     : String?           = null,
-  @SerializedName("is_favourited"     ) var isFavourited     : Boolean?          = null,
-  @SerializedName("is_deleted"        ) var isDeleted        : Boolean?          = null,
-  @SerializedName("is_published"      ) var isPublished      : Boolean?          = null,
-  @SerializedName("is_blocked"        ) var isBlocked        : Boolean?          = null,
-  @SerializedName("author"            ) var author           : Author?           = Author(),
-  @SerializedName("stats"             ) var stats            : Stats?            = Stats(),
-  @SerializedName("published_time"    ) var publishedTime    : String?           = null,
-  @SerializedName("allows_comments"   ) var allowsComments   : Boolean?          = null,
-  @SerializedName("preview"           ) var preview          : Preview?          = Preview(),
-  @SerializedName("content"           ) var content          : Content?          = Content(),
-  @SerializedName("thumbs"            ) var thumbs           : ArrayList<Thumbs> = arrayListOf(),
-  @SerializedName("is_mature"         ) var isMature         : Boolean?          = null,
-  @SerializedName("is_downloadable"   ) var isDownloadable   : Boolean?          = null,
-  @SerializedName("download_filesize" ) var downloadFilesize : Int?              = null
+  @JsonProperty("src"          ) var src          : String? = null,
+  @JsonProperty("height"       ) var height       : Int? = null,
+  @JsonProperty("width"        ) var width        : Int? = null,
+  @JsonProperty("transparency" ) var transparency : Boolean? = null
 
 )
 
-data class Stats (
+data class DeviantResultsDTO (
 
-  @SerializedName("comments"   ) var comments   : Int? = null,
-  @SerializedName("favourites" ) var favourites : Int? = null
+  @JsonProperty("deviationid"       ) var deviationId      : String? = null,
+  @JsonProperty("printid"           ) var printId          : String? = null,
+  @JsonProperty("url"               ) var url              : String? = null,
+  @JsonProperty("title"             ) var title            : String? = null,
+  @JsonProperty("category"          ) var category         : String? = null,
+  @JsonProperty("category_path"     ) var categoryPath     : String? = null,
+  @JsonProperty("is_favourited"     ) var isFavourited     : Boolean? = null,
+  @JsonProperty("is_deleted"        ) var isDeleted        : Boolean? = null,
+  @JsonProperty("is_published"      ) var isPublished      : Boolean? = null,
+  @JsonProperty("is_blocked"        ) var isBlocked        : Boolean? = null,
+  @JsonProperty("author"            ) var author           : DeviantAuthorDTO? = null,
+  @JsonProperty("stats"             ) var stats            : DeviantStatsDTO? = null,
+  @JsonProperty("published_time"    ) var publishedTime    : String? = null,
+  @JsonProperty("allows_comments"   ) var allowsComments   : Boolean? = null,
+  @JsonProperty("preview"           ) var preview          : DeviantPreviewDTO? = null,
+  @JsonProperty("content"           ) var content          : DeviantContentDTO? = null,
+  @JsonProperty("thumbs"            ) var thumbs           : ArrayList<DeviantThumbsDTO> = arrayListOf(),
+  @JsonProperty("is_mature"         ) var isMature         : Boolean? = null,
+  @JsonProperty("is_downloadable"   ) var isDownloadable   : Boolean? = null,
+  @JsonProperty("download_filesize" ) var downloadFileSize : Int? = null
 
 )
 
-data class TextContent (
+data class DeviantStatsDTO (
 
-  @SerializedName("excerpt" ) var excerpt : String? = null,
-  @SerializedName("body"    ) var body    : Body?   = Body()
+  @JsonProperty("comments"   ) var comments   : Int? = null,
+  @JsonProperty("favourites" ) var favourites : Int? = null
 
 )
 
-data class Thumbs (
+data class DeviantThumbsDTO (
 
-  @SerializedName("src"          ) var src          : String?  = null,
-  @SerializedName("height"       ) var height       : Int?     = null,
-  @SerializedName("width"        ) var width        : Int?     = null,
-  @SerializedName("transparency" ) var transparency : Boolean? = null
+  @JsonProperty("src"          ) var src          : String? = null,
+  @JsonProperty("height"       ) var height       : Int? = null,
+  @JsonProperty("width"        ) var width        : Int? = null,
+  @JsonProperty("transparency" ) var transparency : Boolean? = null
 
 )

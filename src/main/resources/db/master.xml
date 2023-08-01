@@ -7,4 +7,6 @@
         <dbms type="postgresql"/>
     </preConditions>
 
+    <include file="changes/init/init.xml" relativeToChangelogFile="true"/>
+
 </databaseChangeLog>
