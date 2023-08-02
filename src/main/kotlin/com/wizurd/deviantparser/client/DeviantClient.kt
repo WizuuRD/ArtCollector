@@ -16,19 +16,26 @@ interface DeviantClient {
     fun getPictures(
         @RequestParam("access_token") token: String,
         @RequestParam username: String,
-        @RequestParam limit: Int = 3
+        @RequestParam("mature_content") mature: Boolean = true,
     ): GalleryDTO
 
     @GetMapping("/oauth2/token")
     fun getToken(
-        @RequestParam client_id: String,
-        @RequestParam client_secret: String,
-        @RequestParam grant_type: String = "client_credentials",
+        @RequestParam("client_id") clientId: String,
+        @RequestParam("client_secret") secret: String,
+        @RequestParam("grant_type") grantType: String,
+        @RequestParam code: String? = null,
+        @RequestParam("redirect_uri") redirectUri: String? = null,
+        @RequestParam scope: String? = null,
+        @RequestParam("refresh_token") refreshToken: String? = null
     ): TokenDTO
+
+
 
     @GetMapping("/api/v1/oauth2/deviation/download/{deviationid}")
     fun getContent(
         @RequestParam("access_token") token: String,
-        @PathVariable("deviationid") pictureId: String
+        @PathVariable("deviationid") pictureId: String,
+        @RequestParam("mature_content") mature: Boolean = true,
     ): DeviantDownloadContentDTO
 }

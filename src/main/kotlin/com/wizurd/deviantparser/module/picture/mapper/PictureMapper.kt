@@ -23,7 +23,7 @@ class PictureMapper(
                     urlPost = result.url.orEmpty(),
                     title = result.title.orEmpty(),
                     content = downloadFile(content.src),
-                    fileName = content.fileName
+                    fileName = content.fileName,
                 )
             }
     }
