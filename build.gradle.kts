@@ -32,8 +32,6 @@ dependencies {
     val springDocOpenApiVersion: String by project
     val postgresqlVersion: String by project
     val feignHttpClientVersion: String by project
-    val mockitoVersion: String by project
-    val mockitoKotlinVersion: String by project
     // SpringBoot
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
@@ -58,6 +56,10 @@ dependencies {
 
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.google.code.gson:gson:2.9.0")
+
+    //VK
+    implementation("com.github.yvasyliev:java-vk-bots-longpoll-api:4.1.3")
+
 }
 
 dependencyManagement {

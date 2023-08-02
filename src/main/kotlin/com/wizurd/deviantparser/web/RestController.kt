@@ -1,6 +1,6 @@
 package com.wizurd.deviantparser.web
 
-import com.wizurd.deviantparser.client.DeviantApi
+import com.wizurd.deviantparser.client.deviant.DeviantApi
 import com.wizurd.deviantparser.model.dictionary.EGrantType
 import com.wizurd.deviantparser.model.dictionary.EGrantType.*
 import com.wizurd.deviantparser.module.picture.mapper.PictureMapper

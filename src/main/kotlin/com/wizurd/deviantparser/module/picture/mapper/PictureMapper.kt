@@ -1,7 +1,7 @@
 package com.wizurd.deviantparser.module.picture.mapper
 
-import com.wizurd.deviantparser.client.DeviantApi
-import com.wizurd.deviantparser.client.dto.GalleryDTO
+import com.wizurd.deviantparser.client.deviant.DeviantApi
+import com.wizurd.deviantparser.client.deviant.dto.GalleryDTO
 import com.wizurd.deviantparser.model.Picture
 import org.springframework.stereotype.Component
 import java.io.BufferedInputStream

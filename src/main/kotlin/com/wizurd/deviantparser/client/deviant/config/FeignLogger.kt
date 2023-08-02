@@ -1,4 +1,4 @@
-package com.wizurd.deviantparser.client.config
+package com.wizurd.deviantparser.client.deviant.config
 
 import feign.Logger
 import org.slf4j.LoggerFactory

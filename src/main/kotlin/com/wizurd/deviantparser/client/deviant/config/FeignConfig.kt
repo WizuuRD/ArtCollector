@@ -1,4 +1,4 @@
-package com.wizurd.deviantparser.client.config
+package com.wizurd.deviantparser.client.deviant.config
 
 import feign.Logger
 import org.springframework.context.annotation.Bean

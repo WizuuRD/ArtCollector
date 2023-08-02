@@ -1,4 +1,4 @@
-package com.wizurd.deviantparser.client
+package com.wizurd.deviantparser.client.deviant
 
 import com.wizurd.deviantparser.model.dictionary.EGrantType
 import org.springframework.beans.factory.annotation.Value

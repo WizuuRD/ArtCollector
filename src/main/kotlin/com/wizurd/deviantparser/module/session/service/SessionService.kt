@@ -1,7 +1,7 @@
 package com.wizurd.deviantparser.module.session.service
 
-import com.wizurd.deviantparser.client.DeviantApi
-import com.wizurd.deviantparser.client.dto.TokenDTO
+import com.wizurd.deviantparser.client.deviant.DeviantApi
+import com.wizurd.deviantparser.client.deviant.dto.TokenDTO
 import com.wizurd.deviantparser.model.Session
 import com.wizurd.deviantparser.model.dictionary.EGrantType
 import com.wizurd.deviantparser.module.session.repository.SessionRepository

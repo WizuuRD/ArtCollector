@@ -1,4 +1,4 @@
-package com.wizurd.deviantparser.client.dto
+package com.wizurd.deviantparser.client.deviant.dto
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
