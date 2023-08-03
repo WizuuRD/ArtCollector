@@ -1,4 +1,4 @@
-rootProject.name = "DeviantParser"
+rootProject.name = "ArtParser"
 
 pluginManagement {
     val kotlinVersion: String by settings
