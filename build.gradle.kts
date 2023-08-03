@@ -14,8 +14,8 @@ plugins {
     kotlin("plugin.allopen")
 }
 
-group = "com.wizurd"
-version = "no version"
+group = "com.wizuurd"
+version = "0.0.1"
 
 repositories {
     mavenCentral()
