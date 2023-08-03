@@ -1,7 +1,7 @@
 package com.wizurd.deviantparser.module.picture.mapper
 
 import com.wizurd.deviantparser.client.deviant.DeviantApi
-import com.wizurd.deviantparser.client.deviant.dto.GalleryDTO
+import com.wizurd.deviantparser.client.deviant.dto.DeviantResultsDTO
 import com.wizurd.deviantparser.model.Picture
 import org.springframework.stereotype.Component
 import java.io.BufferedInputStream
@@ -13,8 +13,8 @@ class PictureMapper(
     private val deviantApi: DeviantApi
 ) {
 
-    fun fromGalleryDTOToPicture(token: String, dto: GalleryDTO): List<Picture> {
-        return dto.results
+    fun fromGalleryDTOToPicture(token: String, dto: List<DeviantResultsDTO>): List<Picture> {
+        return dto
             .filter { it.isDownloadable ?: false }
             .map { result ->
                 val id = result.deviationId ?: throw NoSuchElementException()

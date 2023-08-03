@@ -30,7 +30,12 @@ class DeviantApi(
         )
 
     fun getTokenByRefresh(refreshToken: String) =
-        client.getToken(clientId, clientSecret, EGrantType.REFRESH_TOKEN.code, refreshToken)
+        client.getToken(
+            clientId = clientId,
+            secret = clientSecret,
+            grantType = EGrantType.REFRESH_TOKEN.code,
+            refreshToken = refreshToken
+        )
 
     fun getPictures(token: String, author: String) = client.getPictures(token, author)
 

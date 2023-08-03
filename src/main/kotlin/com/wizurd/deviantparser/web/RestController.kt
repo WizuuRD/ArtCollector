@@ -1,6 +1,7 @@
 package com.wizurd.deviantparser.web
 
 import com.wizurd.deviantparser.client.deviant.DeviantApi
+import com.wizurd.deviantparser.client.vk.VkClient
 import com.wizurd.deviantparser.model.dictionary.EGrantType
 import com.wizurd.deviantparser.model.dictionary.EGrantType.*
 import com.wizurd.deviantparser.module.picture.mapper.PictureMapper
@@ -28,7 +29,8 @@ class RestController(
     private val pictureService: PictureService,
     private val pictureMapper: PictureMapper,
     private val crcHeader: CrcHeaderGenerator,
-    private val sessionService: SessionService
+    private val sessionService: SessionService,
+    private val vkClient: VkClient
 ) {
 
     @PostMapping("/auth")
@@ -39,7 +41,8 @@ class RestController(
     @PostMapping("/pictures/parse")
     fun parsePictures(author: String) {
         val token = sessionService.checkSessionForUpdate(AUTHORIZATION_CODE)
-        pictureService.saveAll(pictureMapper.fromGalleryDTOToPicture(token, deviantApi.getPictures(token, author)))
+        val pictures = pictureService.isExistIn(deviantApi.getPictures(token, author).results)
+        pictureService.saveAll(pictureMapper.fromGalleryDTOToPicture(token, pictures))
     }
 
     @GetMapping("/pictures/parse")
@@ -58,5 +61,10 @@ class RestController(
             .headers(crcHeader.getAttachmentHeader(picture?.fileName ?: "unknown"))
             .contentType(MediaType.parseMediaType(MediaType.APPLICATION_OCTET_STREAM_VALUE))
             .body(ByteArrayResource(picture?.content ?: byteArrayOf()))
+    }
+
+    @PostMapping("/vk/start")
+    fun startVk() {
+        vkClient.startPolling()
     }
 }
