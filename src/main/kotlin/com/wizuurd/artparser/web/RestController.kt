@@ -1,11 +1,11 @@
 package com.wizuurd.artparser.web
 
-import com.wizuurd.artparser.client.vk.VkClient
 import com.wizuurd.artparser.model.dictionary.EGrantType
 import com.wizuurd.artparser.module.picture.mapper.PictureMapper
 import com.wizuurd.artparser.module.picture.service.PictureService
 import com.wizuurd.artparser.module.session.service.SessionService
 import com.wizuurd.artparser.module.util.CrcHeaderGenerator
+import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.core.io.ByteArrayResource
 import org.springframework.http.MediaType
@@ -28,14 +28,15 @@ class RestController(
     private val pictureMapper: PictureMapper,
     private val crcHeader: CrcHeaderGenerator,
     private val sessionService: SessionService,
-    private val vkClient: VkClient
 ) {
 
+    @Operation(summary = "Authorization in DeviantArt")
     @PostMapping("/auth")
     fun authorize(
         @RequestParam grantType: EGrantType,
     ) = sessionService.checkSessionForUpdate(grantType)
 
+    @Operation(summary = "Get 10 pictures of specific user and save them in DB")
     @PostMapping("/pictures/parse")
     fun parsePictures(author: String) {
         val token = sessionService.checkSessionForUpdate(EGrantType.AUTHORIZATION_CODE)
@@ -43,6 +44,7 @@ class RestController(
         pictureService.saveAll(pictureMapper.fromGalleryDTOToPicture(token, pictures))
     }
 
+    @Operation(summary = "Get 10 pictures of specific user and return title, is downloadable and is mature content")
     @GetMapping("/pictures/parse")
     fun getPictures(author: String): List<String> {
         val token = sessionService.checkSessionForUpdate(EGrantType.AUTHORIZATION_CODE)
@@ -51,6 +53,7 @@ class RestController(
         return pictures.results.map { "${it.title.orEmpty()} - ${it.isDownloadable}, ${it.isMature}" }
     }
 
+    @Operation(summary = "Download picture from DB by id")
     @GetMapping("/pictures/{id}/download")
     fun downloadPicture(@PathVariable id: Long): ResponseEntity<ByteArrayResource> {
         val picture = pictureService.findById(id).getOrNull()
@@ -59,10 +62,5 @@ class RestController(
             .headers(crcHeader.getAttachmentHeader(picture?.fileName ?: "unknown"))
             .contentType(MediaType.parseMediaType(MediaType.APPLICATION_OCTET_STREAM_VALUE))
             .body(ByteArrayResource(picture?.content ?: byteArrayOf()))
-    }
-
-    @PostMapping("/vk/start")
-    fun startVk() {
-        vkClient.startPolling()
     }
 }
